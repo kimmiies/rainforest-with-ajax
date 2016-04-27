@@ -3,14 +3,16 @@ $(document).on('ready page: load', function() {
     event.preventDefault();
     var searchValue = $('#search').val();
 
-
-    $.get('/products?search=' + searchValue)   //making new tempory route?
-      .done(function(data){
-        console.log(data);
-          $('#products').html(data);
-      });
+  $.getScript('/products?search=' + searchValue);  
   });
 });
+
+
+// $.get('/products?search=' + searchValue)   //making new tempory route?
+//   .done(function(data){
+//     console.log(data);
+//       $('#products').html(data);
+//   });
 
 //upon this AJAX request being done/successful do this: change the html of DOM (DIV id=products) to the data that came back from request
 
