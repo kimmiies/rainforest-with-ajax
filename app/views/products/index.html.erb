@@ -1,8 +1,19 @@
 <h1>Products</h1>
 
-
-<% @products.each do |product| %>
-  <p><%= product.name %>, $<%= product.formatted_price %></p>
-  <p><%= product.description %></p>
-
+<%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%- submit_tag "Search" %>
 <% end %>
+
+
+<div id="products">
+  <%= render @products %>
+</div>
+
+
+<!-- this will take it and loop though  -->
+<!-- render all products. and i know you have a partial for each individual item
+for each instance of a product it render that partial (view)-->
+
+
+<!--by default forms are posts so you have to override it   -->

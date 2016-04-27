@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
 
+# if there is a search and there's a product that looks like your search term then provide that 
   def index
-      @products = Product.all
+      @products = if params[:search]
+        Product.where("LOWER(name) LIKE LOWER(?)", "%#{{params[:search]}}")
+      else
+        Product.all
+      end
+
     end
 
     def show
