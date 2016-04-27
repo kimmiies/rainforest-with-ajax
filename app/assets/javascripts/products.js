@@ -4,13 +4,11 @@ $(document).on('ready page: load', function() {
     var searchValue = $('#search').val();
 
 
-    $.ajax({
-        url: '/products?search=' + searchValue,    //making new tempory route?
-        type: 'GET',
-        dateType: 'html'
-    }).done(function(data){
-      $('#products').html(data);
-    });
+    $.get('/products?search=' + searchValue)   //making new tempory route?
+      .done(function(data){
+        console.log(data);
+          $('#products').html(data);
+      });
   });
 });
 
@@ -39,11 +37,6 @@ $(document).on('ready page: load', function() {
   //   xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
   //   xhr.send();
   // });
-
-
-
-
-
 
 
 // Make sure the DOM is loaded before we begin setting up and selecting listeners
