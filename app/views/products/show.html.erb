@@ -9,18 +9,20 @@
 
   <p>Reviews for <%= @product.name %></p>
 
+<div id="review-list">
   <% @product.reviews.each do |review| %>
-  <!-- product & review now have associations so we can call things on it -->
-  <p>
+    <div class="review">
+      <div class="poster">
 
-    <%= review.comment %>
-    <br>
-    <% if review.user != nil %>
-      <em> by <%= review.user.name %></em>
-      Added on: <%= review.created_at %>
-    <% end %>
-  </p>
-<% end %>
+
+        Posted by <%= review.user.name %> on: <%= review.created_at %>
+      </div>
+      <p class="comment">
+        <%= review.comment %>
+      </p>
+    </div>
+  <% end %>
+</div>
 
 
 <!-- helper method being used again. If you're logged in, you get to see review form, create and submit -->
