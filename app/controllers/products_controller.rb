@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
 
       if current_user
         @review = @product.reviews.build
+        # @review = Review.new
+        # @review.product_id = @product.id
       end
     end
 
