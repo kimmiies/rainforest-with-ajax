@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review = @product.reviews.build(review_params)
     @review.user = current_user
 
-    response_to do |format|
+    respond_to do |format|
       if @review.save
         format.html { redirect_to product_path(@product), notice: 'Review created successfully' }
         format.js {} # This will look for app/views/reviews/create.js.erb
@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
         format.html {render 'products/show', alert: "There was an error"}
         format.js {}
       end
+    end
   end
 
   def destroy
