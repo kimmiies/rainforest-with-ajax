@@ -22,17 +22,11 @@
     <%= form_for [@product, @review], :remote => true do |f| %>
 
     <!-- @review will add a class and id of 'new review' to the form -->
-      <% if @review.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <div id="review-form-errors">
+      <%= render :partial => "/products/review_form_errors" %>
 
-          <ul>
-          <% @review.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+    </div>
+
 
       <div class="field">
         <%= f.label :comment %><br />
