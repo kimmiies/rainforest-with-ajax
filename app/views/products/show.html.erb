@@ -12,6 +12,7 @@
   <% @product.reviews.each do |review| %>
   <!-- product & review now have associations so we can call things on it -->
   <p>
+
     <%= review.comment %>
     <br>
     <% if review.user != nil %>
@@ -27,7 +28,9 @@
   <% if current_user %>
     <h4>New Review</h4>
 
-    <%= form_for([@product, @review]) do |f| %>
+    <%= form_for [@product, @review], :remote => true do |f| %>
+
+    <!-- @review will add a class and id of 'new review' to the form -->
       <% if @review.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
